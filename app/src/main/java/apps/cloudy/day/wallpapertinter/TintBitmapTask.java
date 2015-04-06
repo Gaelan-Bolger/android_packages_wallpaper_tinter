@@ -31,6 +31,8 @@ public class TintBitmapTask extends AsyncTask<Integer, Void, Bitmap> {
     @Override
     protected void onPreExecute() {
         sProgress = new ProgressDialog(sContext);
+        sProgress.setCancelable(false);
+        sProgress.setCanceledOnTouchOutside(false);
         sProgress.setIndeterminate(true);
         sProgress.setMessage(sContext.getString(R.string.dialog_processing_image));
         sProgress.show();

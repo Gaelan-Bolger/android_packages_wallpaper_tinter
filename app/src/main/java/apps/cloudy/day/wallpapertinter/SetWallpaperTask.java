@@ -38,6 +38,8 @@ public class SetWallpaperTask extends AsyncTask<Bitmap, Void, Exception> {
     @Override
     protected void onPreExecute() {
         sProgress = new ProgressDialog(sContext);
+        sProgress.setCancelable(false);
+        sProgress.setCanceledOnTouchOutside(false);
         sProgress.setIndeterminate(true);
         sProgress.setMessage(sContext.getString(R.string.dialog_setting_wallpaper));
         sProgress.show();
