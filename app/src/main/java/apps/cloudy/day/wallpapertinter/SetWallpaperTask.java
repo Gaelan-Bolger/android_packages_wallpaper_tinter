@@ -39,7 +39,7 @@ public class SetWallpaperTask extends AsyncTask<Bitmap, Void, Exception> {
     protected void onPreExecute() {
         sProgress = new ProgressDialog(sContext);
         sProgress.setIndeterminate(true);
-        sProgress.setMessage("Setting wallpaper");
+        sProgress.setMessage(sContext.getString(R.string.dialog_setting_wallpaper));
         sProgress.show();
     }
 
@@ -50,10 +50,10 @@ public class SetWallpaperTask extends AsyncTask<Bitmap, Void, Exception> {
         if (null != sContext) {
             if (null != e) {
                 Log.e(TAG, "Error setting wallpaper", e);
-                Toast.makeText(sContext, "Error setting wallpaper", Toast.LENGTH_SHORT).show();
+                Toast.makeText(sContext, sContext.getString(R.string.toast_error_setting_wallpaper), Toast.LENGTH_SHORT).show();
             } else {
                 Log.d(TAG, "Wallpaper set");
-                Toast.makeText(sContext, "Wallpaper set", Toast.LENGTH_SHORT).show();
+                Toast.makeText(sContext, sContext.getString(R.string.toast_wallpaper_set), Toast.LENGTH_SHORT).show();
             }
         }
     }

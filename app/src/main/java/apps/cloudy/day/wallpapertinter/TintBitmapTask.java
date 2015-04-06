@@ -30,7 +30,10 @@ public class TintBitmapTask extends AsyncTask<Integer, Void, Bitmap> {
 
     @Override
     protected void onPreExecute() {
-        showProgress();
+        sProgress = new ProgressDialog(sContext);
+        sProgress.setIndeterminate(true);
+        sProgress.setMessage(sContext.getString(R.string.dialog_processing_image));
+        sProgress.show();
     }
 
     @Override
@@ -74,6 +77,7 @@ public class TintBitmapTask extends AsyncTask<Integer, Void, Bitmap> {
             }
             pixels[i] = newColor;
         }
+
         Bitmap b = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         b.setPixels(pixels, 0, w, 0, 0, w, h);
         return b;
@@ -81,7 +85,8 @@ public class TintBitmapTask extends AsyncTask<Integer, Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        hideProgress();
+        if (null != sProgress)
+            sProgress.hide();
         if (null != bitmap) {
             ImageView imageView = sImageReference.get();
             if (null != imageView)
@@ -89,17 +94,4 @@ public class TintBitmapTask extends AsyncTask<Integer, Void, Bitmap> {
         }
     }
 
-    private void showProgress() {
-        if (null == sProgress) {
-            sProgress = new ProgressDialog(sContext);
-            sProgress.setIndeterminate(true);
-            sProgress.setMessage("Processing image");
-        }
-        sProgress.show();
-    }
-
-    private void hideProgress() {
-        if (null != sProgress)
-            sProgress.hide();
-    }
 }

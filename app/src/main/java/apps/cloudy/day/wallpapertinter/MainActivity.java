@@ -25,7 +25,8 @@ import java.io.IOException;
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
-    private static final int PHOTO_PICKER_CODE = 100;
+    private static final String EXTRA_SOURCE = "source";
+    private static final int PHOTO_PICKER_CODE = 1001;
 
     private PorterDuff.Mode mBlendMode = PorterDuff.Mode.ADD;
     private Bitmap mSource;
@@ -55,14 +56,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (null != savedInstanceState)
-            mSource = savedInstanceState.getParcelable("source");
+            mSource = savedInstanceState.getParcelable(EXTRA_SOURCE);
         setContentView(R.layout.activity_main);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelable("source", mSource);
+        outState.putParcelable(EXTRA_SOURCE, mSource);
     }
 
     @Override
@@ -122,7 +123,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     Log.e(TAG, "Error selecting image", e);
                 }
             } else {
-                Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_no_image_selected), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -154,7 +155,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 setBlendMode(PorterDuff.Mode.OVERLAY);
                 return true;
             case R.id.action_settings:
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.action_settings, Toast.LENGTH_SHORT).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -183,7 +184,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.setType("image/*");
                     intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-                    startActivityForResult(Intent.createChooser(intent, "Select image"), PHOTO_PICKER_CODE);
+                    startActivityForResult(Intent.createChooser(intent, getString(R.string.dialog_title_select_image)), PHOTO_PICKER_CODE);
                 } else {
                     mSource = null;
                     resetViews();
@@ -200,15 +201,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         mSeekBarBlue.setProgress(0);
         mSeekBarGreen.setProgress(0);
         findViewById(R.id.seekbars).setVisibility(View.VISIBLE);
-        bGetSetWallpaper.setText("Set Wallpaper");
-        bSelectReset.setText("Reset");
+        bGetSetWallpaper.setText(getString(R.string.set_wallpaper));
+        bSelectReset.setText(getString(R.string.reset));
         mImage.setImageBitmap(mSource);
     }
 
     private void resetViews() {
         mImage.setImageResource(0);
-        bGetSetWallpaper.setText("Get Wallpaper");
-        bSelectReset.setText("Select Image");
+        bGetSetWallpaper.setText(getString(R.string.get_wallpaper));
+        bSelectReset.setText(getString(R.string.select_image));
         mSeekBarRed.setProgress(0);
         mSeekBarBlue.setProgress(0);
         mSeekBarGreen.setProgress(0);

@@ -5,7 +5,7 @@
     <item
         android:id="@+id/action_blend_mode"
         android:alphabeticShortcut="b"
-        android:title="Blend Mode"
+        android:title="@string/action_blend_mode"
         android:orderInCategory="1"
         app:showAsAction="never">
         <menu>
@@ -14,17 +14,17 @@
                 android:checkableBehavior="single">
                 <item
                     android:id="@+id/blend_mode_add"
-                    android:title="Add"
+                    android:title="@string/action_add"
                     android:checked="true" />
                 <item
                     android:id="@+id/blend_mode_multiply"
-                    android:title="Multiply" />
+                    android:title="@string/action_multiply" />
                 <item
                     android:id="@+id/blend_mode_screen"
-                    android:title="Screen" />
+                    android:title="@string/action_screen" />
                 <item
                     android:id="@+id/blend_mode_overlay"
-                    android:title="Overlay" />
+                    android:title="@string/action_overlay" />
             </group>
         </menu>
     </item>

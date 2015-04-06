@@ -23,27 +23,27 @@
 
         <SeekBar
             android:id="@+id/sb_red"
-            android:thumbTint="#ff0000"
-            android:progressTint="#ff0000"
+            android:thumbTint="@color/red"
+            android:progressTint="@color/red"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="16777216" />
+            android:max="@integer/max_color_value" />
 
         <SeekBar
             android:id="@+id/sb_green"
-            android:thumbTint="#00ff00"
-            android:progressTint="#00ff00"
+            android:thumbTint="@color/green"
+            android:progressTint="@color/green"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="16777216" />
+            android:max="@integer/max_color_value" />
 
         <SeekBar
             android:id="@+id/sb_blue"
-            android:thumbTint="#0000ff"
-            android:progressTint="#0000ff"
+            android:thumbTint="@color/blue"
+            android:progressTint="@color/blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="16777216" />
+            android:max="@integer/max_color_value" />
     </LinearLayout>
 
     <LinearLayout
@@ -57,14 +57,14 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Get Wallpaper"
+            android:text="@string/get_wallpaper"
             android:id="@+id/b_get_wallpaper"
             android:layout_weight="1" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Select Image"
+            android:text="@string/select_image"
             android:id="@+id/b_select_image"
             android:layout_weight="1" />
 
