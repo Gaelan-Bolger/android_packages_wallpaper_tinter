@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -57,7 +58,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         if (null != savedInstanceState)
             mSource = savedInstanceState.getParcelable(EXTRA_SOURCE);
+        if (null == mSource)
+            mSource = BitmapFactory.decodeResource(getResources(), R.drawable.chroma_wallpaper);
+
         setContentView(R.layout.activity_main);
+        onSourceChanged();
     }
 
     @Override
@@ -105,9 +110,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         bGetSetWallpaper.setOnClickListener(this);
         bSelectReset = (Button) findViewById(R.id.b_select_image);
         bSelectReset.setOnClickListener(this);
-
-        if (null != mSource)
-            onSourceChanged();
     }
 
     @Override
