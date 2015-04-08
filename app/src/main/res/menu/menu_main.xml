@@ -3,32 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
     <item
-        android:id="@+id/action_blend_mode"
-        android:alphabeticShortcut="b"
-        android:title="@string/action_blend_mode"
-        android:orderInCategory="1"
-        app:showAsAction="never">
-        <menu>
-            <group
-                android:id="@+id/blend_modes"
-                android:checkableBehavior="single">
-                <item
-                    android:id="@+id/blend_mode_add"
-                    android:title="@string/action_add"
-                    android:checked="true" />
-                <item
-                    android:id="@+id/blend_mode_multiply"
-                    android:title="@string/action_multiply" />
-                <item
-                    android:id="@+id/blend_mode_screen"
-                    android:title="@string/action_screen" />
-                <item
-                    android:id="@+id/blend_mode_overlay"
-                    android:title="@string/action_overlay" />
-            </group>
-        </menu>
-    </item>
-    <item
         android:id="@+id/action_settings"
         android:alphabeticShortcut="s"
         android:title="@string/action_settings"

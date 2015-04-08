@@ -1,19 +1,28 @@
 <resources>
     <string name="app_name">Wallpaper Tinter</string>
+    <string name="action_reset">Reset</string>
+    <string name="action_export">Export</string>
     <string name="action_blend_mode">Blend Mode</string>
     <string name="action_add">Add</string>
+    <string name="action_subtract">Subtract</string>
     <string name="action_multiply">Multiply</string>
     <string name="action_screen">Screen</string>
     <string name="action_overlay">Overlay</string>
     <string name="action_settings">Settings</string>
+    <string name="chroma_default">Chroma Default</string>
+    <string name="current_wallpaper">Current Wallpaper</string>
     <string name="get_wallpaper">Get Wallpaper</string>
     <string name="set_wallpaper">Set Wallpaper</string>
     <string name="select_image">Select Image</string>
-    <string name="reset">Reset</string>
+    <string name="image_title">Wallpaper Tinter</string>
+    <string name="image_description">Created using Wallpaper Tinter for Android</string>
     <string name="dialog_title_select_image">Select image</string>
     <string name="dialog_processing_image">Processing image</string>
     <string name="dialog_setting_wallpaper">Setting wallpaper</string>
+    <string name="dialog_reset_all_changes">Reset all changes made and start from scratch?</string>
+    <string name="dialog_set_as_wallpaper">Set image as homescreen wallpaper?</string>
     <string name="toast_no_image_selected">No image selected</string>
     <string name="toast_error_setting_wallpaper">Error setting wallpaper</string>
     <string name="toast_wallpaper_set">Wallpaper set</string>
+    <string name="toast_wallpaper_saved">Wallpaper saved to pictures</string>
 </resources>

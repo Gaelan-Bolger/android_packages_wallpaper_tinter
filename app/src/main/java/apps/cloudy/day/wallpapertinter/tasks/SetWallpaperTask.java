@@ -1,4 +1,4 @@
-package apps.cloudy.day.wallpapertinter;
+package apps.cloudy.day.wallpapertinter.tasks;
 
 import android.app.ProgressDialog;
 import android.app.WallpaperManager;
@@ -6,22 +6,26 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.IOException;
 
-/**
- * Created by Gaelan on 4/5/2015.
- */
+import apps.cloudy.day.wallpapertinter.R;
+
 public class SetWallpaperTask extends AsyncTask<Bitmap, Void, Exception> {
+
+    public interface SetWallpaperCallback {
+        public void onWallpaperSet(Boolean success);
+    }
 
     private static final String TAG = "SetWallpaperTask";
 
-    private Context sContext;
     private ProgressDialog sProgress;
+    private Context sContext;
+    private final SetWallpaperCallback sCallback;
 
-    public SetWallpaperTask(Context context) {
+    public SetWallpaperTask(Context context, SetWallpaperCallback callback) {
         sContext = context;
+        sCallback = callback;
     }
 
     @Override
@@ -47,16 +51,11 @@ public class SetWallpaperTask extends AsyncTask<Bitmap, Void, Exception> {
 
     @Override
     protected void onPostExecute(Exception e) {
+        if (null != e)
+            Log.e(TAG, "Error setting wallpaper", e);
         if (null != sProgress)
             sProgress.dismiss();
-        if (null != sContext) {
-            if (null != e) {
-                Log.e(TAG, "Error setting wallpaper", e);
-                Toast.makeText(sContext, sContext.getString(R.string.toast_error_setting_wallpaper), Toast.LENGTH_SHORT).show();
-            } else {
-                Log.d(TAG, "Wallpaper set");
-                Toast.makeText(sContext, sContext.getString(R.string.toast_wallpaper_set), Toast.LENGTH_SHORT).show();
-            }
-        }
+        if (null != sCallback)
+            sCallback.onWallpaperSet(null == e);
     }
 }

@@ -1,75 +1,80 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:showDividers="middle"
+    android:divider="@drawable/divider_16dp"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/image"
+    <FrameLayout
+        android:id="@+id/b_chroma_default"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/seekbars"
-        android:src="@drawable/chroma_wallpaper" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:foreground="?android:attr/selectableItemBackground">
 
-    <LinearLayout
-        android:id="@+id/seekbars"
+        <ImageView
+            android:id="@+id/iv_chroma_default"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/chroma_wallpaper"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="?android:attr/textAppearanceMedium"
+            android:padding="8dp"
+            android:textColor="@android:color/white"
+            android:text="@string/chroma_default" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/b_current_wallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <ImageView
+            android:id="@+id/iv_current_wallpaper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/chroma_wallpaper"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="?android:attr/textAppearanceMedium"
+            android:padding="8dp"
+            android:textColor="@android:color/white"
+            android:text="@string/current_wallpaper" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/b_select_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_above="@+id/buttons"
-        android:visibility="invisible">
+        android:layout_weight="0"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@color/accent">
 
-        <SeekBar
-            android:id="@+id/sb_red"
-            android:thumbTint="@color/red"
-            android:progressTint="@color/red"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="@integer/max_color_value" />
-
-        <SeekBar
-            android:id="@+id/sb_green"
-            android:thumbTint="@color/green"
-            android:progressTint="@color/green"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:max="@integer/max_color_value" />
-
-        <SeekBar
-            android:id="@+id/sb_blue"
-            android:thumbTint="@color/blue"
-            android:progressTint="@color/blue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:max="@integer/max_color_value" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/buttons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/get_wallpaper"
-            android:id="@+id/b_get_wallpaper"
-            android:layout_weight="1" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="?android:attr/textAppearanceMedium"
+            android:padding="8dp"
+            android:textColor="@android:color/white"
             android:text="@string/select_image"
-            android:id="@+id/b_select_image"
-            android:layout_weight="1" />
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal" />
+    </FrameLayout>
 
 
-    </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

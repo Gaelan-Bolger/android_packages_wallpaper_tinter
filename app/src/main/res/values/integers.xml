@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="max_color_value">16777216</integer>
+    <integer name="max_color_value">255</integer>
 </resources>
