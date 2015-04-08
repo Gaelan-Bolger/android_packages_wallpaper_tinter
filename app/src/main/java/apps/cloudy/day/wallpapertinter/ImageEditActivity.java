@@ -256,7 +256,6 @@ public class ImageEditActivity extends ActionBarActivity {
         blend();
     }
 
-    // Always work on the source bitmap, never the modified
     private void blend() {
         new ProcessBlendTask(this, mModified, new ProcessBaseTask.ProcessBitmapCallback() {
             @Override
@@ -288,8 +287,22 @@ public class ImageEditActivity extends ActionBarActivity {
     }
 
     private void showExportWallpaperDialog() {
-        MediaStore.Images.Media.insertImage(getContentResolver(), null != mModified ? mModified : mSource, getString(R.string.image_title), getString(R.string.image_description));
-        Toast.makeText(this, getString(R.string.toast_wallpaper_saved), Toast.LENGTH_SHORT).show();
+        new AlertDialog.Builder(this)
+                .setCancelable(true)
+                .setMessage(getString(R.string.dialog_save_to_sdcard))
+                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        MediaStore.Images.Media.insertImage(getContentResolver(), mModified, getString(R.string.image_title), getString(R.string.image_description));
+                        Toast.makeText(ImageEditActivity.this, getString(R.string.toast_wallpaper_saved), Toast.LENGTH_SHORT).show();
+                    }
+                }).create().show();
     }
 
     private void showSetWallpaperDialog() {

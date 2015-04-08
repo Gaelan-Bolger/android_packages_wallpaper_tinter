@@ -20,6 +20,7 @@
     <string name="dialog_processing_image">Processing image</string>
     <string name="dialog_setting_wallpaper">Setting wallpaper</string>
     <string name="dialog_reset_all_changes">Reset all changes made and start from scratch?</string>
+    <string name="dialog_save_to_sdcard">Save wallpaper to sdcard?</string>
     <string name="dialog_set_as_wallpaper">Set image as homescreen wallpaper?</string>
     <string name="toast_no_image_selected">No image selected</string>
     <string name="toast_error_setting_wallpaper">Error setting wallpaper</string>
